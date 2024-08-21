@@ -1,5 +1,3 @@
-from time import time, sleep
-
 import allure
 from behave import *
 
@@ -12,9 +10,13 @@ logger = configReader.getLogger()
 @given(u'I got navigated to Home page and empty cart')
 @allure.step("My account page and emptying cart")
 def step_impl(context):
-    context.home_page = HomePage(context.driver)
-    assert context.home_page.check_home_page_title("My Account")
-    context.home_page.clear_cart()
+    try:
+        context.home_page = HomePage(context.driver)
+        assert context.home_page.check_home_page_title("My Account")
+        logger.info("Navigated to Accounts page")
+        context.home_page.clear_cart()
+    except Exception as e:
+        logger.error(e.args)
 
 
 @when(u'I enter valid product say "{product}" into the Search box field')

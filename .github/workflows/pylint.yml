@@ -26,8 +26,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt 
         
-    - name: Install Google Chrome
-      run: choco install googlechrome --no-progress
+    - name: Install Google Chrome with updated checksum
+      run:     choco install googlechrome --version=128.0.6613.36 --source=https://dl.google.com/chrome/install/128.0.6613.36/chrome_installer.exe --ignore-checksums
+
 
     - name: Install ChromeDriver
       run: choco install chromedriver --no-progress

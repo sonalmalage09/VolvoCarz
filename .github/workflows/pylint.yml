@@ -28,8 +28,8 @@ jobs:
         
     - name: Run Behave tests
       run: |
-        behave -f allure_behave.formatter:AllureFormatter -o allure-report tests/features --nologger > behave.log 2>&1 || (type behave.log && exit 1)
-
+        behave -f allure_behave.formatter:AllureFormatter -o allure-report tests/features --nologger > behave.log
+    
     - name: Generate Allure Report (optional)
       if: success() || failure()
       run: |

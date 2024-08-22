@@ -7,7 +7,7 @@ Feature: Login Functionality
     And I click on Login button
     Then I should get logged in
     Examples:
-      |email                          |password     |
+      |email                         |password      |
       |volvocartestuser@gmail.com    |Professional@1|
 
 #

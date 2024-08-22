@@ -36,13 +36,13 @@ jobs:
     - name: Run Behave tests
       run: |
         source venv/bin/activate
-        behave ../tests/features/
+        behave /tests/features/
 
     - name: Generate Allure Report (optional)
       if: success() || failure()
       run: |
         source venv/bin/activate
-        behave -f allure_behave.formatter:AllureFormatter -o reports ../tests/features/
+        behave -f allure_behave.formatter:AllureFormatter -o reports /tests/features/
         npm install -g allure-commandline --save-dev.
         allure generate allure-results --clean -o allure-report        
 

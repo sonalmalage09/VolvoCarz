@@ -39,7 +39,6 @@ jobs:
           libnss3 \
           libgconf-2-4 \
           libxi6 \
-          libgconf2-4 \
           libxss1 \
           fonts-liberation \
           libappindicator3-1 \

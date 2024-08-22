@@ -20,7 +20,6 @@ parse==
 parse-type==
 pluggy==
 pycparser==
-pypiwin32==
 PySocks==
 pytest==
 pytest-xdist==

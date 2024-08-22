@@ -28,7 +28,7 @@ jobs:
         
     - name: Run Behave tests
       run: |
-        behave -f allure_behave.formatter:AllureFormatter -o allure-report
+        behave -f allure_behave.formatter:AllureFormatter -o allure-report \\tests\\features
 
     - name: Generate Allure Report (optional)
       if: success() || failure()

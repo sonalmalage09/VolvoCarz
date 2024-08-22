@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
@@ -26,7 +26,8 @@ jobs:
         python -m venv venv
         source venv/bin/activate
         pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r requirements.txt || true  # Ignore errors on non-Windows systems
+        if [[ "$RUNNER_OS" == "Windows" ]]; then pip install pywin32==306; fi
         
     - name: Install Chrome
       run: |

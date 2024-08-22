@@ -29,6 +29,7 @@ jobs:
         pip install -r requirements.txt || true  # Ignore errors on non-Windows systems
         if [[ "$RUNNER_OS" == "Windows" ]]; then pip install pywin32==306; fi
         pip install behave 
+        pip install behave allure-behave
         
     - name: Install Chrome
       run: |

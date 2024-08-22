@@ -20,7 +20,6 @@ parse==1.20.2
 parse-type==0.6.2
 pluggy==1.5.0
 pycparser==2.22
-pypiwin32==223
 PySocks==1.7.1
 pytest==8.3.2
 pytest-xdist==3.6.1

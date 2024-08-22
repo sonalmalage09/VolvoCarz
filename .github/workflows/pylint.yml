@@ -26,24 +26,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt 
         
-    - name: Install Google Chrome with updated checksum
-      run:     choco install googlechrome --version=128.0.6613.36 --source=https://dl.google.com/chrome/install/128.0.6613.36/chrome_installer.exe --ignore-checksums
-
-
-    - name: Install ChromeDriver
-      run: choco install chromedriver --no-progress
-        
-    - name: Install Chrome dependencies
-      run: |
-        sudo apt-get install -y \
-          libnss3 \
-          libgconf-2-4 \
-          libxi6 \
-          libxss1 \
-          fonts-liberation \
-          libappindicator3-1 \
-          xdg-utils
-
     - name: Run Behave tests
       run: |
         behave -f allure_behave.formatter:AllureFormatter -o allure-report tests/features/

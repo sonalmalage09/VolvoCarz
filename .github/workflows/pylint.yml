@@ -26,18 +26,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt 
         
-    - name: Install Chrome
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y google-chrome-stable
-        
+    - name: Install Google Chrome
+      run: choco install googlechrome --no-progress
+
     - name: Install ChromeDriver
-      run: |
-        CHROME_DRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
-        wget -N https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip
-        unzip chromedriver_linux64.zip
-        sudo mv -f chromedriver /usr/local/bin/chromedriver
-        sudo chmod +x /usr/local/bin/chromedriver
+      run: choco install chromedriver --no-progress
         
     - name: Install Chrome dependencies
       run: |

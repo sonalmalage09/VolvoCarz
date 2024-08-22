@@ -21,15 +21,13 @@ jobs:
       with:
         python-version: '3.8'
   
-    - name: Install dependencies
+    - name: Install dependencies Linux
+      if: runner.os != 'Windows'
       run: |
         python -m venv venv
         source venv/bin/activate
         pip install --upgrade pip
-        pip install -r requirements.txt || true  # Ignore errors on non-Windows systems
-        if [[ "$RUNNER_OS" == "Windows" ]]; then pip install pywin32==306; fi
-        pip install behave 
-        pip install allure-behave
+        pip install -r requirements.txt 
         
     - name: Install Chrome
       run: |

@@ -33,6 +33,10 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y google-chrome-stable
         
+    - name: Install ChromeDriver
+      run: |
+        sudo apt-get install -y chromedriver
+        
     - name: Install Chrome dependencies
       run: |
         sudo apt-get install -y \

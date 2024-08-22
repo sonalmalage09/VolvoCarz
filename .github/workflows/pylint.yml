@@ -33,6 +33,18 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y google-chrome-stable
         
+    - name: Install Chrome dependencies
+      run: |
+        sudo apt-get install -y \
+          libnss3 \
+          libgconf-2-4 \
+          libxi6 \
+          libgconf2-4 \
+          libxss1 \
+          fonts-liberation \
+          libappindicator3-1 \
+          xdg-utils
+
     - name: Run Behave tests
       run: |
         source venv/bin/activate

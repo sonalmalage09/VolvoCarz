@@ -1,9 +1,10 @@
-name: Run Behave BDD Tests
+name: Behave Tests
 
 on:
   push:
     branches:
       - main
+      - feature/*
   pull_request:
     branches:
       - main
@@ -13,29 +14,42 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8'
 
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          npm install -g allure-commandline --save-dev
+    - name: Install dependencies
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pip install --upgrade pip
+        pip install -r requirements.txt
 
-      - name: Run Behave tests with Allure
-        run: |
-          behave -f allure_behave.formatter:AllureFormatter -o allure-results
+    - name: Run Behave tests
+      run: |
+        source venv/bin/activate
+        behave
 
-      - name: Generate Allure report
-        run: |
-          allure generate allure-results --clean -o allure-report
+    - name: Generate Allure Report (optional)
+      if: success() || failure()
+      run: |
+        source venv/bin/activate
+        allure generate allure-results --clean -o allure-report
 
-      - name: Upload Allure report
-        uses: actions/upload-artifact@v3
-        with:
-          name: allure-report
-          path: allure-report
+    - name: Upload Allure Report as Artifact (optional)
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: allure-report
+        path: allure-report
+
+    - name: Archive Test Results (optional)
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: behave-results
+        path: allure-results

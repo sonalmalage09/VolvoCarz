@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - tests/feature/*
   pull_request:
     branches:
       - main
@@ -12,6 +11,10 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: tests/features
 
 
     steps:

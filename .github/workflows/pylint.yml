@@ -28,6 +28,7 @@ jobs:
         pip install --upgrade pip
         pip install -r requirements.txt || true  # Ignore errors on non-Windows systems
         if [[ "$RUNNER_OS" == "Windows" ]]; then pip install pywin32==306; fi
+        pip install behave 
         
     - name: Install Chrome
       run: |
@@ -57,7 +58,6 @@ jobs:
       run: |
         source venv/bin/activate
         behave -f allure_behave.formatter:AllureFormatter -o allure-report tests/features/
-
 
     - name: Generate Allure Report (optional)
       if: success() || failure()

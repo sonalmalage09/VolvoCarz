@@ -24,9 +24,7 @@ jobs:
     - name: Install dependencies Linux
       if: runner.os != 'Windows'
       run: |
-        python -m venv venv
-        source venv/bin/activate
-        pip install --upgrade pip
+        python -m pip install --upgrade pip
         pip install -r requirements.txt 
         
     - name: Install Chrome
@@ -55,7 +53,6 @@ jobs:
 
     - name: Run Behave tests
       run: |
-        source venv/bin/activate
         behave -f allure_behave.formatter:AllureFormatter -o allure-report tests/features/
 
     - name: Generate Allure Report (optional)

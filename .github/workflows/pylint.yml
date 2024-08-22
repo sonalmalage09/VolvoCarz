@@ -20,14 +20,19 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: '3.8'
-
+  
     - name: Install dependencies
       run: |
         python -m venv venv
         source venv/bin/activate
         pip install --upgrade pip
         pip install -r requirements.txt
-
+        
+    - name: Install Chrome
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y google-chrome-stable
+        
     - name: Run Behave tests
       run: |
         source venv/bin/activate

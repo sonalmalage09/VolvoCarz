@@ -36,7 +36,7 @@ jobs:
     - name: Run Behave tests
       run: |
         source venv/bin/activate
-        behave -f allure_behave.formatter:AllureFormatter -o allure-report ../../tests/features/
+        behave -f allure_behave.formatter:AllureFormatter -o allure-report tests/features/
 
 
     - name: Generate Allure Report (optional)

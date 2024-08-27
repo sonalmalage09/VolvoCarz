@@ -37,7 +37,7 @@ jobs:
         run: env | sort
 
       - name: List test directory contents
-        run: dir .\tests\features
+        run: dir ./tests/features
 
       - name: Run Behave tests with detailed logging
         run: |

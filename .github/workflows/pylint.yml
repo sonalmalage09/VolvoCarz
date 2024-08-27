@@ -27,26 +27,33 @@ jobs:
           pip install -r requirements.txt
 
       # Add debug steps here
-      - name: Print Python version
-        run: python --version
+- name: Print Python version
+  run: python --version
 
-      - name: List installed Python packages
-        run: pip list
+- name: List installed Python packages
+  run: pip list
 
-      - name: Print environment variables
-        run: env | sort
+- name: Print environment variables
+  run: env | sort
 
-      # Run Behave tests with verbose output
-      - name: Run Behave tests
-        run: |
-          behave -f allure_behave.formatter:AllureFormatter -o allure-report tests/features --no-capture -v > behave.log 2>&1
+- name: List test directory contents
+  run: dir tests\features
 
-      # Check the logs after running tests
-      - name: Output Behave log
-        if: always()
-        run: cat behave.log
+- name: Run Behave tests with detailed logging
+  run: |
+    behave -f allure_behave.formatter:AllureFormatter -o allure-report tests/features --no-capture -v --logging-level DEBUG > behave.log 2>&1
 
-      - name: Generate Allure Report (optional)
+- name: Output Behave log
+  if: always()
+  run: cat behave.log
+
+- name: Upload Behave log
+  if: always()
+  uses: actions/upload-artifact@v3
+  with:
+    name: behave-log
+    path: behave.log
+- name: Generate Allure Report (optional)
         if: success() || failure()
         run: |
           npm install -g allure-commandline --save-dev

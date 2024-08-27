@@ -19,5 +19,9 @@ class SearchPage(BasePage):
         return self.retrieved_element_text_equals("message_xpath", self.message_xpath, expected_message_text)
 
     def scroll_AddtoCart_button(self):
-        self.scroll_to_element("addToCart_css", self.addToCart_css)
-        return CheckOutPage(self.driver)
+        try:
+            self.scroll_to_element("addToCart_css", self.addToCart_css)
+            self.log.info("addToCart button scroll")
+            return CheckOutPage(self.driver)
+        except Exception as e:
+            self.log.error(e)

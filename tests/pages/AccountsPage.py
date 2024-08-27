@@ -1,11 +1,13 @@
 from selenium.webdriver.common.by import By
 
+from utils.configReader import getLogger
+
 
 class AccountsPage:
 
     def __init__(self, driver):
+        self.log = getLogger()
         self.driver = driver
-
     edit_your_account_information_option_link_text = "Edit your account information"
 
     def display_status_of_edit_your_account_information_option(self):

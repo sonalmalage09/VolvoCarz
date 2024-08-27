@@ -3,8 +3,9 @@ from tests.pages.BasePage import BasePage
 
 class CheckOutPage(BasePage):
 
-    def __init__(self, driver):
+    def __init__(self, driver, log):
         super().__init__(driver)
+        super().__init__(log)
 
     addToCart_css = "button[type='button'] span[class='hidden-xs hidden-sm hidden-md']"
     cartDetails_css = "#cart-total"
@@ -26,5 +27,3 @@ class CheckOutPage(BasePage):
 
     def verify_out_of_stock_message(self, expected_result):
         return self.retrieved_element_text_equals("warningMsg_xpath", self.warningMsg_xpath, expected_result)
-
-

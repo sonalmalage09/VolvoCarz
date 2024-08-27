@@ -3,10 +3,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from utils.configReader import getLogger
+
 
 class BasePage:
 
     def __init__(self, driver):
+        self.log = getLogger()
         self.driver = driver
 
     def click_on_element(self, locator_type, locator_value):

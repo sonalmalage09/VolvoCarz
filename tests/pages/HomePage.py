@@ -41,5 +41,9 @@ class HomePage(BasePage):
         return SearchPage(self.driver)
 
     def clear_cart(self):
-        self.click_on_element("cartDetails_xpath", self.cartDetails_xpath)
-        self.click_on_element("removeProduct_xpath",self.removeProduct_xpath)
+        try:
+            self.click_on_element("cartDetails_xpath", self.cartDetails_xpath)
+            self.click_on_element("removeProduct_xpath", self.removeProduct_xpath)
+            self.log.info("Cart is cleared before searching product")
+        except Exception as e:
+            self.log.error(e)

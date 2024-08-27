@@ -6,7 +6,7 @@ import logging
 
 def read_configuration(category, key):
     config = ConfigParser()
-    config.read("configurations/behave.ini")
+    config.read("behave.ini")
     return config.get(category, key)
 
 

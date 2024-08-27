@@ -1,12 +1,13 @@
-
 from tests.pages.AccountsPage import AccountsPage
 from tests.pages.BasePage import BasePage
+from utils.configReader import getLogger
 
 
 class LoginPage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
+        self.log = getLogger()
 
     email_address_field_id = "input-email"
     password_field_id = "input-password"
@@ -20,8 +21,11 @@ class LoginPage(BasePage):
         self.type_into_element("password_field_id", self.password_field_id, password_text)
 
     def click_on_login_button(self):
-        self.click_on_element("login_button_xpath", self.login_button_xpath)
-        return AccountsPage(self.driver)
+        try:
+            self.click_on_element("login_button_xpath", self.login_button_xpath)
+            return AccountsPage(self.driver)
+        except Exception as e:
+            self.log.error(e)
 
     def display_status_of_warning_message(self, expected_warning_text):
         return self.retrieved_element_text_contains("warning_message_xpath", self.warning_message_xpath,

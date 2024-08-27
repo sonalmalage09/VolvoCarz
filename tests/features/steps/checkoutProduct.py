@@ -1,12 +1,8 @@
-import time
 
 import allure
 from behave import *
 
 from tests.pages.CheckOutPage import CheckOutPage
-from utils import configReader
-
-logger = configReader.getLogger()
 
 
 @given(u'I got navigated to Search Page Results')

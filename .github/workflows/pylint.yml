@@ -46,6 +46,10 @@ jobs:
       - name: Output Behave log
         if: always()
         run: cat behave.log
+        
+      - name: Output Log File
+        if: always()
+        run: cat logfile.log
 
       - name: Upload Behave log
         if: always()

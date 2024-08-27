@@ -1,0 +1,67 @@
+Traceback (most recent call last):
+  File "C:\Users\Sonal\AppData\Local\Programs\Python\Python310\lib\runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "C:\Users\Sonal\AppData\Local\Programs\Python\Python310\lib\runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "C:\Users\Sonal\VolvoCars\VolvoCars\.venv\Scripts\behave.exe\__main__.py", line 7, in <module>
+  File "C:\Users\Sonal\VolvoCars\VolvoCars\.venv\lib\site-packages\behave\__main__.py", line 183, in main
+    return run_behave(config)
+  File "C:\Users\Sonal\VolvoCars\VolvoCars\.venv\lib\site-packages\behave\__main__.py", line 127, in run_behave
+    failed = runner.run()
+  File "C:\Users\Sonal\VolvoCars\VolvoCars\.venv\lib\site-packages\behave\runner.py", line 804, in run
+    return self.run_with_paths()
+  File "C:\Users\Sonal\VolvoCars\VolvoCars\.venv\lib\site-packages\behave\runner.py", line 824, in run_with_paths
+    return self.run_model()
+  File "C:\Users\Sonal\VolvoCars\VolvoCars\.venv\lib\site-packages\behave\runner.py", line 626, in run_model
+    failed = feature.run(self)
+  File "C:\Users\Sonal\VolvoCars\VolvoCars\.venv\lib\site-packages\behave\model.py", line 321, in run
+    failed = scenario.run(runner)
+  File "C:\Users\Sonal\VolvoCars\VolvoCars\.venv\lib\site-packages\allure_commons\_allure.py", line 248, in __call__
+    with self:
+  File "C:\Users\Sonal\VolvoCars\VolvoCars\.venv\lib\site-packages\allure_commons\_allure.py", line 259, in __exit__
+    plugin_manager.hook.stop_test(parent_uuid=None,
+  File "C:\Users\Sonal\VolvoCars\VolvoCars\.venv\lib\site-packages\pluggy\_hooks.py", line 513, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+  File "C:\Users\Sonal\VolvoCars\VolvoCars\.venv\lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+  File "C:\Users\Sonal\VolvoCars\VolvoCars\.venv\lib\site-packages\pluggy\_callers.py", line 139, in _multicall
+    raise exception.with_traceback(exception.__traceback__)
+  File "C:\Users\Sonal\VolvoCars\VolvoCars\.venv\lib\site-packages\pluggy\_callers.py", line 103, in _multicall
+    res = hook_impl.function(*args)
+  File "C:\Users\Sonal\VolvoCars\VolvoCars\.venv\lib\site-packages\allure_behave\listener.py", line 97, in stop_test
+    self.stop_scenario(context['scenario'])
+  File "C:\Users\Sonal\VolvoCars\VolvoCars\.venv\lib\site-packages\allure_behave\listener.py", line 117, in stop_scenario
+    self.logger.close_test(self.current_scenario_uuid)
+  File "C:\Users\Sonal\VolvoCars\VolvoCars\.venv\lib\site-packages\allure_commons\reporter.py", line 120, in close_test
+    test_case = self._items.pop(uuid)
+  File "C:\Users\Sonal\VolvoCars\VolvoCars\.venv\lib\site-packages\allure_commons\reporter.py", line 45, in pop
+    return self.thread_context.pop(key)
+KeyError
+Loading config defaults from "./behave.ini"
+Using defaults:
+          color False
+  show_snippets True
+   show_skipped True
+        dry_run False
+    show_source True
+   show_timings True
+ stdout_capture True
+ stderr_capture True
+    log_capture True
+ logging_format %(levelname)s:%(name)s:%(message)s
+  logging_level 20
+  steps_catalog False
+        summary True
+          junit False
+          stage None
+       userdata {}
+ default_format pretty
+   default_tags 
+scenario_outline_annotation_schema {name} -- @{row.id} {examples.name}
+         format ['allure_behave.formatter:AllureFormatter']
+       outfiles ['allure-results']
+          paths ['tests\\feature']
+more_formatters {}
+Supplied path: "tests\features"
+Trying base directory: C:\Users\Sonal\VolvoCars\VolvoCars\tests\features
+Exception KeyError: 
